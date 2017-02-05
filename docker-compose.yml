@@ -1,0 +1,18 @@
+version: '2'
+services:
+  postgres:
+    container_name: blockchainbox-postgres 
+    image: blockchainbox/postgres:latest
+    build: postgres/
+    ports:
+      - 5432:5432
+  ethereum: 
+    container_name: blockchainbox-ethereum
+    image: blockchainbox/ethereum:latest
+    build: ethereum/   
+    ports:
+      - 3000:3000
+      - 8545:8545
+      - 30303:30303
+    links:
+      - postgres:postgres
