@@ -1,0 +1,2 @@
+CREATE USER root WITH PASSWORD 'root';
+GRANT ALL PRIVILEGES ON DATABASE "postgres" to root;
