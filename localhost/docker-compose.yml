@@ -12,7 +12,19 @@ services:
     build: ethereum/   
     ports:
       - 3000:3000
-      - 8545:8545
       - 30303:30303
     links:
       - postgres:postgres
+    environment:
+      - AWS_ACCESS_KEY_ID=
+      - AWS_SECRET_ACCESS_KEY=
+      - AWS_REGION=
+      - AWS_CONTRACT_QUEUE_URL=
+      - AWS_TRANSACTION_QUEUE_URL=
+      - AWS_TRANSACTION_RECEIPT_QUEUE_URL=
+      - AWS_EVENT_QUEUE_URL=
+      - AWS_RDS_USER=
+      - AWS_RDS_PASSWORD=
+      - AWS_RDS_DATABASE=
+      - AWS_RDS_HOST=
+      - AWS_RDS_PORT=

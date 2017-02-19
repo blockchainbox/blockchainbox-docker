@@ -1,5 +1,8 @@
 #!/bin/bash -x
 
+# Start blockchainbox service
+cd /root/blockchainbox && /bin/sh start.sh
+
 geth init ~/genesis.json
 
 # Generate and store a wallet password
