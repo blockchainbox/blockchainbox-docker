@@ -26,17 +26,14 @@ RUN npm install npm pm2 -g
 
 RUN echo fs.inotify.max_user_watches=524288 | tee -a /etc/sysctl.conf && sysctl -p
 
-### 需要增加 git clone blockchainbox
-### 需要增加 ADD .settings
-### 需要增加 source .settings
-
 ADD ./genesis.json /root/genesis.json
 ADD ./static-nodes.json /root/.ethereum/static-nodes.json
 
 ADD ./testnet.sh /root/testnet.sh
 RUN chmod +x /root/testnet.sh
 
-### 這邊要改成 RUN
-CMD /root/testnet.sh
+ADD ./blockchainbox.sh /root/blockchainbox.sh
+RUN chmod +x /root/blockchainbox.sh
+RUN /root/blockchainbox.sh
 
-### 需要增加 CMD /root/blockchainbox.sh, 這邊要啟動 ~/blockchainbox/start.sh
+CMD /root/testnet.sh

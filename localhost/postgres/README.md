@@ -1,5 +1,7 @@
 ## PostgreSQL
 
+Support localhost to access PostgreSQL database
+
 ### Settings
 
 ```
