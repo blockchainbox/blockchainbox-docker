@@ -11,10 +11,19 @@ services:
     image: blockchainbox/ethereum:latest
     build: ethereum/   
     ports:
-      - 3000:3000
+      - 8545:8545
       - 30303:30303
     links:
       - postgres:postgres
+  blockchainbox:
+    container_name: blockchainbox-core
+    image: blockchainbox/core:latest
+    build: blockchainbox/
+    ports: 
+      - 3000:3000
+    links: 
+      - postgres:postgres
+      - ethereum:ethereum
     environment:
       - AWS_ACCESS_KEY_ID=
       - AWS_SECRET_ACCESS_KEY=
@@ -23,8 +32,11 @@ services:
       - AWS_TRANSACTION_QUEUE_URL=
       - AWS_TRANSACTION_RECEIPT_QUEUE_URL=
       - AWS_EVENT_QUEUE_URL=
+      - AWS_WEBHOOK_QUEUE_URL=
       - AWS_RDS_USER=
       - AWS_RDS_PASSWORD=
       - AWS_RDS_DATABASE=
       - AWS_RDS_HOST=
       - AWS_RDS_PORT=
+      - ENODE_BASE=http://ethereum:8545
+      - COINBASE_PASSWORD=password

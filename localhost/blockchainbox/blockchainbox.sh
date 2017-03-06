@@ -1,8 +1,6 @@
-ln -s /usr/bin/nodejs /usr/bin/node
-
+# clone blockchainbox
 git clone https://github.com/blockchainbox/blockchainbox-core.git /root/blockchainbox
 
 # run blockchainbox service
-cd ~/blockchainbox
-git checkout develop
+cd /root/blockchainbox
 npm install
