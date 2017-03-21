@@ -18,6 +18,8 @@ docker-compose up
     - https://github.com/Kunstmaan/docker-ethereum/tree/master/geth-testnet
 - PostgreSQL
     - https://github.com/docker-library/postgres/tree/master/9.4/alpine
+- Elasticsearch
+    - https://github.com/docker-library/elasticsearch/tree/master/5
 
 ## Docker settings
 
