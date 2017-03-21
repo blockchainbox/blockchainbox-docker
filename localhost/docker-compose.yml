@@ -6,6 +6,13 @@ services:
     build: postgres/
     ports:
       - 5432:5432
+  elasticsearch:
+    container_name: blockchainbox-elasticsearch
+    image: blockchainbox/elasticsearch:latest
+    build: elasticsearch/
+    ports:
+      - 9200:9200
+      - 9300:9300
   ethereum: 
     container_name: blockchainbox-ethereum
     image: blockchainbox/ethereum:latest
@@ -24,6 +31,7 @@ services:
     links: 
       - postgres:postgres
       - ethereum:ethereum
+      - elasticsearch:elasticsearch
     environment:
       - AWS_ACCESS_KEY_ID=
       - AWS_SECRET_ACCESS_KEY=
@@ -38,5 +46,5 @@ services:
       - AWS_RDS_DATABASE=
       - AWS_RDS_HOST=
       - AWS_RDS_PORT=
-      - ENODE_BASE=http://ethereum:8545
-      - COINBASE_PASSWORD=password
+      - ENODE_BASE=
+      - COINBASE_PASSWORD=
