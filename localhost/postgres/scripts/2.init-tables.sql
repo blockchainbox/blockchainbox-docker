@@ -91,10 +91,22 @@ ALTER TABLE WebhookData
 
 CREATE TABLE IF NOT EXISTS Account (
 	id serial primary key,
-	address text,
-	passphrase text,	-- hash
+	account text,
+	password text,
 	createTimestamp timestamp with time zone
 );
 
 ALTER TABLE Account
+	OWNER TO root;
+
+CREATE TABLE IF NOT EXISTS Address (
+	id serial primary key,
+	accountid integer,
+	address text,
+	passphrase text,	-- hash
+	token text,
+	createTimestamp timestamp with time zone
+);
+
+ALTER TABLE Address
   OWNER TO root;
